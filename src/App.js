@@ -60,7 +60,7 @@ function App() {
     // console.log("arrayOfTotalsByYear", arrayOfTotalsByYear)
 
     const mappedTotalsByYear = arrayOfTotalsByYear.map((year) => (
-      <li>{year.year} - {year.total}</li>
+      <li>{year.year} - ${year.total}</li>
     ))
 
   //  3. Find the maxCustomer by finding the order whose `total_price` matches `maxTotalPrice`
@@ -72,8 +72,10 @@ function App() {
       return maxOrder.customer_id
     }
   }
-
   const maxOrderCustomerId = findMaxOrderCustomerId(maxOrder[0])
+
+  const maxCustomerName = findCustomerWithMaxOrder(maxOrderCustomerId, customers)
+
 
   function findCustomerWithMaxOrder(maxOrderId, customers) {
     if (customers.length > 0) {
@@ -96,9 +98,8 @@ function App() {
       {showData ?
         <>
           <h2>Most expensive order = {maxTotalPrice}</h2>
-          <h2>Customer with the most orders = </h2>
+          <h2>Customer with the most orders = {maxCustomerName}</h2>
           <h2>Total Orders by Year: {mappedTotalsByYear}</h2>
-          <div>{mappedCustomers}</div>
         </>
         : null}
     </div>
