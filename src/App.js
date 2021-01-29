@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React, {useState} from 'react'
 import './App.css';
 
@@ -19,23 +18,27 @@ function App() {
     ))
   })
 
-  console.log("individualCustomers", individualCustomers)
+  const totalPrices = data.map((customer) => {
+      return parseInt(customer.total_price)
+    }
+  )
+
+  const maxTotalPrice = Math.max(...totalPrices)
+
+
+  // const individualCustomers = data.map((customer) => {
+  //   return customer.items.filter((item) => (
+  //     Math.max(item.price)))
+  // })
 
   const mappedCustomers = data.map((order) => {
     return <li>{order.customer_id}</li>
 })
-
-  // const mappedItems = individualCustomers.map((item) => (
-  //   <li>{item.name} - {item.price}</li>
-  // ))
-
-  console.log("mappedCustomers", mappedCustomers)
-
-  // console.log("mappedItems", mappedItems)
-  
+ 
   return (
     <div className="App">
       <h1>Research Square</h1>
+      <h2>Largest total price: {maxTotalPrice}</h2>
       <button onClick={displayData}>Click</button>
       <div>{mappedCustomers} - {individualCustomers}</div>
     </div>
