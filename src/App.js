@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
+import ExpensiveOrderRow from './ExpensiveOrderRow/ExpensiveOrderRow'
+import MostCustomerOrdersRow from './MostCustomerOrdersRow/MostCustomerOrdersRow'
 import axios from 'axios'
+import { fetchData } from './services/dataService'
 import './App.css';
 
 function App() {
@@ -7,14 +10,16 @@ function App() {
   const [customers, setCustomers] = useState([]);
   const [showData, setShowData] = useState(false);
 
-  const fetchData = () => {
+  const fetchApiData = () => {
     axios.get("/2020/orders-2020-02-10.json")
+      // fetchData()
       .then(({ data }) => {
         setData(data.orders);
         setCustomers(data.customers);
       })
       .then(setShowData(true));
   }
+
 
   const totalPrices = data.map((customer) => {
     return parseInt(customer.total_price);
@@ -28,16 +33,6 @@ function App() {
   // 1. TypeScript
   // 2. Linting
 
-  //  2. calculate and print the sum of prices for all
-  //   orders created in the previous three years, grouped by year.
-  //  Total price of orders in 2018 = 275.00
-  //   Total price of orders in 2019 = 860.00
-  //   Total price of orders in 2020 =  20.00
-
-  //  Loop through the `orders` and check the first four characters of the `created_date` property --edit: loop through years
-  //  Push the `total_price` property of that order into an array for that specific year
-  //  After the loop is completed, reduce those year arrays into a single sum and render in the DOM
-  //  
 
   function printTotalPriceOfOrders () {
     const sumByYear = data.reduce((accumulator, order) => {
@@ -57,7 +52,6 @@ function App() {
 
   
     const arrayOfTotalsByYear = Array.from(totalPriceOfOrders, ([year, total]) => ({ year, total }));
-    // console.log("arrayOfTotalsByYear", arrayOfTotalsByYear)
 
     const mappedTotalsByYear = arrayOfTotalsByYear.map((year) => (
       <li>{year.year} - ${year.total}</li>
@@ -84,9 +78,6 @@ function App() {
     }
   }
 
-  console.log("Customer with max order", maxOrderCustomerId)
-  console.log("Name", findCustomerWithMaxOrder(maxOrderCustomerId, customers))
-
   const mappedCustomers = data.map((order) => {
     return <li>{order.customer_id}</li>
   });
@@ -94,10 +85,11 @@ function App() {
   return (
     <div className="App">
       <h1>Research Square</h1>
-      <button onClick={fetchData}>Click</button>
+      <button onClick={fetchApiData}>Click</button>
       {showData ?
         <>
-          <h2>Most expensive order = {maxTotalPrice}</h2>
+        <ExpensiveOrderRow orders={data} />
+        <MostCustomerOrdersRow orders={data} customers={customers}/>
           <h2>Customer with the most orders = {maxCustomerName}</h2>
           <h2>Total Orders by Year: {mappedTotalsByYear}</h2>
         </>
