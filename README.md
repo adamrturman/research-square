@@ -48,6 +48,10 @@ url = [https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json](
 
    Customer with the most orders = [CUST-0001] Yoda
 
+## Screenshot
+
+![Research Square Challenge Screenshot](https://user-images.githubusercontent.com/67024033/106362091-99f67c80-62e6-11eb-9ed7-8327e48dda08.png)
+
 ## Set Up Instructions
 - Fork and clone this repository.
 - Once inside the directory, install dependencies with `npm install`.

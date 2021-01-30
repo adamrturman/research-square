@@ -1,36 +1,34 @@
-import React from 'react'
-import styles from '../styles/Components.module.css'
-
+import React from 'react';
+import styles from '../styles/Components.module.css';
 
 function MostCustomerOrdersRow(props) {
+    const {orders, customers} = props;
 
-    const totalPrices = props.orders.map((customer) => {
-        return parseInt(customer.total_price);
-    }
-    )
+    function findMaxOrderCustomerId() {
+        const totalPrices = orders.map((customer) => {
+            return parseInt(customer.total_price);
+        });
+    
+        const maxTotalPrice = Math.max(...totalPrices);
+    
+        const maxOrder = orders.find(order => order.total_price === maxTotalPrice);
 
-    const maxTotalPrice = Math.max(...totalPrices);
-
-    const maxOrder = props.orders.filter(order => order.total_price === maxTotalPrice)
-
-    function findMaxOrderCustomerId(maxOrder) {
-        if (maxOrder) {
-            return maxOrder.customer_id
-        }
+        return maxOrder.customer_id;
     }
 
-    function findCustomerWithMaxOrder(maxOrderId, customers) {
-        if (customers.length > 0) {
-            const foundCustomer = customers.find(customer => customer.id === maxOrderId);
-            return foundCustomer.name;
-        }
+    function findCustomerWithMaxOrder(maxOrderId) {
+        const foundCustomer = customers.find(customer => customer.id === maxOrderId);
+        return foundCustomer.name;
     }
 
-    const maxOrderCustomerId = findMaxOrderCustomerId(maxOrder[0])
+    const maxOrderCustomerId = findMaxOrderCustomerId();
+    const maxCustomerName = findCustomerWithMaxOrder(maxOrderCustomerId);
 
-    const maxCustomerName = findCustomerWithMaxOrder(maxOrderCustomerId, props.customers)
-
-    return <h2>Customer with the most orders= <span className={styles.green}>{maxCustomerName}</span></h2>
+    return (
+        <h2>
+            Customer with the most orders= <span className={styles.green}>{maxCustomerName}</span>
+        </h2>
+    );
 }
 
-export default MostCustomerOrdersRow
+export default MostCustomerOrdersRow;
