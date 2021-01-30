@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.67bfe54f.chunk.css",
-    "main.js": "/static/js/main.8ebee661.chunk.js",
-    "main.js.map": "/static/js/main.8ebee661.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.e1230804.js",
-    "runtime-main.js.map": "/static/js/runtime-main.e1230804.js.map",
-    "static/js/2.332052cf.chunk.js": "/static/js/2.332052cf.chunk.js",
-    "static/js/2.332052cf.chunk.js.map": "/static/js/2.332052cf.chunk.js.map",
-    "static/js/3.f4d276c2.chunk.js": "/static/js/3.f4d276c2.chunk.js",
-    "static/js/3.f4d276c2.chunk.js.map": "/static/js/3.f4d276c2.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.67bfe54f.chunk.css.map": "/static/css/main.67bfe54f.chunk.css.map",
-    "static/js/2.332052cf.chunk.js.LICENSE.txt": "/static/js/2.332052cf.chunk.js.LICENSE.txt",
-    "static/media/research-square-logo.63a69446.svg": "/static/media/research-square-logo.63a69446.svg"
+    "main.css": "/research-square/static/css/main.67bfe54f.chunk.css",
+    "main.js": "/research-square/static/js/main.8ebee661.chunk.js",
+    "main.js.map": "/research-square/static/js/main.8ebee661.chunk.js.map",
+    "runtime-main.js": "/research-square/static/js/runtime-main.9c390d70.js",
+    "runtime-main.js.map": "/research-square/static/js/runtime-main.9c390d70.js.map",
+    "static/js/2.332052cf.chunk.js": "/research-square/static/js/2.332052cf.chunk.js",
+    "static/js/2.332052cf.chunk.js.map": "/research-square/static/js/2.332052cf.chunk.js.map",
+    "static/js/3.f4d276c2.chunk.js": "/research-square/static/js/3.f4d276c2.chunk.js",
+    "static/js/3.f4d276c2.chunk.js.map": "/research-square/static/js/3.f4d276c2.chunk.js.map",
+    "index.html": "/research-square/index.html",
+    "static/css/main.67bfe54f.chunk.css.map": "/research-square/static/css/main.67bfe54f.chunk.css.map",
+    "static/js/2.332052cf.chunk.js.LICENSE.txt": "/research-square/static/js/2.332052cf.chunk.js.LICENSE.txt",
+    "static/media/research-square-logo.63a69446.svg": "/research-square/static/media/research-square-logo.63a69446.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e1230804.js",
+    "static/js/runtime-main.9c390d70.js",
     "static/js/2.332052cf.chunk.js",
     "static/css/main.67bfe54f.chunk.css",
     "static/js/main.8ebee661.chunk.js"
