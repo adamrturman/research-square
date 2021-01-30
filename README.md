@@ -1,8 +1,9 @@
 # Research Square Coding Challenge
 
-## Deployed URL
+## Deployed URL 
+[https://adamrturman.github.io/research-square/](https://adamrturman.github.io/research-square/)
 
-## TASK #1
+### TASK #1
 
 ### Summary:
 
@@ -18,11 +19,11 @@
 
 
 
-url =[https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json](https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json)
+url = [https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json](https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json)
 
 
 
-## TASK #2
+### TASK #2
 
 ### Summary:
 
