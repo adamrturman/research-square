@@ -1,99 +1,34 @@
-import React, { useState } from 'react'
-import ExpensiveOrderRow from './ExpensiveOrderRow/ExpensiveOrderRow'
-import MostCustomerOrdersRow from './MostCustomerOrdersRow/MostCustomerOrdersRow'
+import React, { useState, useEffect } from 'react'
+import ExpensiveOrder from './ExpensiveOrder/ExpensiveOrder'
+import MostCustomerOrders from './MostCustomerOrders/MostCustomerOrders'
 import TotalOrdersByYears from './TotalOrdersByYear/TotalOrdersByYear'
 import axios from 'axios'
 import { fetchData } from './services/dataService'
 import './App.css';
+import logo from './img/research-square-logo.svg'
 
 function App() {
   const [orders, setOrders] = useState([]);
   const [customers, setCustomers] = useState([]);
-  const [showData, setShowData] = useState(false);
 
-  const fetchApiData = () => {
+  useEffect(() => {
     axios.get("/2020/orders-2020-02-10.json")
       // fetchData()
       .then(({ data }) => {
         setOrders(data.orders);
         setCustomers(data.customers);
       })
-      .then(setShowData(true));
-  }
-
-
-  // const totalPrices = data.map((customer) => {
-  //   return parseInt(customer.total_price);
-  // }
-  // )
-
-  // const maxTotalPrice = Math.max(...totalPrices);
-
-  // as time allows
-  // 0. service(s), no logic in App.js, separate data vs. presentational components
-  // 1. TypeScript
-  // 2. Linting
-
-
-  // function printTotalPriceOfOrders () {
-  //   const sumByYear = data.reduce((accumulator, order) => {
-  //     const orderYear = new Date(order.created_date).getFullYear();
-  //     if (accumulator.has(orderYear)) {
-  //       const currentSumByYear = accumulator.get(orderYear);
-  //       accumulator.set(orderYear, currentSumByYear + order.total_price);
-  //     } else {
-  //       accumulator.set(orderYear, order.total_price)
-  //     }
-  //     return accumulator;
-  //   }, new Map());
-  //   return sumByYear;
-  // }
-
-  // const totalPriceOfOrders = printTotalPriceOfOrders()
-
-  
-  //   const arrayOfTotalsByYear = Array.from(totalPriceOfOrders, ([year, total]) => ({ year, total }));
-
-  //   const mappedTotalsByYear = arrayOfTotalsByYear.map((year) => (
-  //     <li>{year.year} - ${year.total}</li>
-  //   ))
-
-  //  3. Find the maxCustomer by finding the order whose `total_price` matches `maxTotalPrice`
-  // const maxOrder = data.filter(order => order.total_price === maxTotalPrice)
-
-  // //  Then grab that `customer_id` and find the `customer` who matches that and return their `name`
-  // function findMaxOrderCustomerId(maxOrder) {
-  //   if (maxOrder) {
-  //     return maxOrder.customer_id
-  //   }
-  // }
-  // const maxOrderCustomerId = findMaxOrderCustomerId(maxOrder[0])
-
-  // const maxCustomerName = findCustomerWithMaxOrder(maxOrderCustomerId, customers)
-
-
-  // function findCustomerWithMaxOrder(maxOrderId, customers) {
-  //   if (customers.length > 0) {
-  //     const foundCustomer = customers.find(customer => customer.id === maxOrderId);
-  //     return foundCustomer.name;
-  //   }
-  // }
-
-  const mappedCustomers = orders.map((order) => {
-    return <li>{order.customer_id}</li>
-  });
+      .catch(error => alert(error))
+  }, [])
 
   return (
     <div className="App">
-      <h1>Research Square</h1>
-      <button onClick={fetchApiData}>Click</button>
-      {showData ?
+      <h1><img src={logo} /></h1>
         <>
-        <ExpensiveOrderRow orders={orders} />
-        <MostCustomerOrdersRow orders={orders} customers={customers}/>
+        <ExpensiveOrder orders={orders} />
+        <MostCustomerOrders orders={orders} customers={customers}/>
         <TotalOrdersByYears orders={orders} />
         </>
-        : null}
     </div>
   );
 }

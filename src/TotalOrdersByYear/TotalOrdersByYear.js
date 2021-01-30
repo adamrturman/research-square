@@ -1,30 +1,31 @@
 import React from 'react'
+import styles from '../styles/Components.module.css'
 
 function TotalOrdersByYears(props) {
 
-    function printTotalPriceOfOrders () {
+    function printTotalPriceOfOrders() {
         const sumByYear = props.orders.reduce((accumulator, order) => {
-          const orderYear = new Date(order.created_date).getFullYear();
-          if (accumulator.has(orderYear)) {
-            const currentSumByYear = accumulator.get(orderYear);
-            accumulator.set(orderYear, currentSumByYear + order.total_price);
-          } else {
-            accumulator.set(orderYear, order.total_price)
-          }
-          return accumulator;
+            const orderYear = new Date(order.created_date).getFullYear();
+            if (accumulator.has(orderYear)) {
+                const currentSumByYear = accumulator.get(orderYear);
+                accumulator.set(orderYear, currentSumByYear + order.total_price);
+            } else {
+                accumulator.set(orderYear, order.total_price)
+            }
+            return accumulator;
         }, new Map());
         return sumByYear;
-      }
-    
-      const totalPriceOfOrders = printTotalPriceOfOrders()
-    
-      
-        const arrayOfTotalsByYear = Array.from(totalPriceOfOrders, ([year, total]) => ({ year, total }));
-    
-        const mappedTotalsByYear = arrayOfTotalsByYear.map((year) => (
-          <li>{year.year} - ${year.total}</li>
-        ))
-    return<h2>Total Orders by year: {mappedTotalsByYear}</h2>
+    }
+
+    const totalPriceOfOrders = printTotalPriceOfOrders()
+
+
+    const arrayOfTotalsByYear = Array.from(totalPriceOfOrders, ([year, total]) => ({ year, total }));
+
+    const mappedTotalsByYear = arrayOfTotalsByYear.map((year) => (
+        <li>{year.year} - ${year.total}</li>
+    ))
+    return <h2>Total Orders by year: <span className={styles.green}>{mappedTotalsByYear}</span></h2>
 }
 
 export default TotalOrdersByYears
