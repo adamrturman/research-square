@@ -12,7 +12,7 @@ function App() {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    axios.get("/2020/orders-2020-02-10.json")
+    axios.get("https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json")
       // fetchData()
       .then(({ data }) => {
         setOrders(data.orders);
