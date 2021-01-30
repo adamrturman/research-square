@@ -18,8 +18,7 @@
 
 
 
-url = 'https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json';
-[https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json](https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json)
+url =[https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json](https://rs-coding-exercise.s3.amazonaws.com/2020/orders-2020-02-10.json)
 
 
 
