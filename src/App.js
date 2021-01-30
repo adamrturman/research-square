@@ -7,7 +7,7 @@ import { fetchData } from './services/dataService'
 import './App.css';
 
 function App() {
-  const [data, setData] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [showData, setShowData] = useState(false);
 
@@ -15,7 +15,7 @@ function App() {
     axios.get("/2020/orders-2020-02-10.json")
       // fetchData()
       .then(({ data }) => {
-        setData(data.orders);
+        setOrders(data.orders);
         setCustomers(data.customers);
       })
       .then(setShowData(true));
@@ -79,7 +79,7 @@ function App() {
   //   }
   // }
 
-  const mappedCustomers = data.map((order) => {
+  const mappedCustomers = orders.map((order) => {
     return <li>{order.customer_id}</li>
   });
 
@@ -89,10 +89,9 @@ function App() {
       <button onClick={fetchApiData}>Click</button>
       {showData ?
         <>
-        <ExpensiveOrderRow orders={data} />
-        <MostCustomerOrdersRow orders={data} customers={customers}/>
-        <TotalOrdersByYears orders={data} />
-          {/* <h2>Total Orders by Year: {mappedTotalsByYear}</h2> */}
+        <ExpensiveOrderRow orders={orders} />
+        <MostCustomerOrdersRow orders={orders} customers={customers}/>
+        <TotalOrdersByYears orders={orders} />
         </>
         : null}
     </div>
