@@ -24,6 +24,7 @@ function App() {
   return (
     <div className="App">
       <h1><img src={logo} /></h1>
+        <hr/>
         <>
         <ExpensiveOrder orders={orders} />
         <MostCustomerOrders orders={orders} customers={customers}/>
